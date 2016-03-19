@@ -8,28 +8,33 @@ namespace SmartShoppingDat
 {
     public class FileCom
     {
-        public static void ExportBatteryInfo( Client entity)
+        public static void ExportInfo( Client entity)
         {
-            string Path = "@E:\\Test";
-            var sb = new StringBuilder();
-            sb.AppendLine(@"ClientsId, Username, First Name, Last Name, Adress, Phone");
-            sb.AppendLine(entity.ToString());
-            var fileFullName = string.Format(@"{0}\test.csv", Path);
+            string info="";
+            string Path = "C:\\Test";
+            var fileFullName = string.Format(@"{0}\DataExchange.csv", Path);
+            info = Convert.ToString(entity.ClientId) +"," + entity.Username + "," + entity.FirstName + "," + entity.LastName + "," + entity.Adress + "," + entity.Phone;
 
-            File.WriteAllText(fileFullName, sb.ToString());
- 
-
+            File.WriteAllText(fileFullName, info);
         }
 
         public static string ReadCommand()
         {
-            string text = File.ReadAllText(@"E:\Test\cmd.txt");
+            string text = File.ReadAllText("C:\\Test\\cmd.txt");
             return text;
         }
 
-        public static string ReeadEntry()
+        public static void maskcommand()
         {
-            string text = File.ReadAllText(@"E:\Test\UnivData.txt");
+            string fileFullName = "C:\\Test\\UnivData.txt";
+            string info = "0";
+            File.WriteAllText(fileFullName, info);
+        }
+
+
+        public static string ReadEntry()
+        {
+            string text = File.ReadAllText("C:\\Test\\UnivData.txt");
             return text;
         }
 
